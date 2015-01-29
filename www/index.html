@@ -25,24 +25,33 @@
                navigator.splashscreen.hide() ;                 // hide splash screen
             }
         } ;
-        document.addEventListener("deviceready", onDeviceReady, false) ;
+        document.addEventListener("deviceready", onDeviceReady, false);
+		
     </script>
     
     <script>   
         $.ui.autoLaunch = false; 
         $.ui.backButtonText = "Atrás";
-                
         $(document).ready(function(){
             $.ui.launch();
+			$('.tile').css('height',($(window).height()/3)-33);
+			$('.tilebig,.miframe').css('height',parseInt($(window).height())-(2*parseInt($('#navbar').height())));
+			$('.miframe').css('width',parseInt($(window).width())-20);
         });
+		$(window).resize(function(){
+			$('.tile').css('height',($(window).height()/3)-33);
+			$('.tilebig').css('height',parseInt($(window).height())-(2*parseInt($('#navbar').height())));
+			$('.tilebig,.miframe').css('height',parseInt($(window).height())-(2*parseInt($('#navbar').height())));
+			$('.miframe').css('width',parseInt($(window).width())-20);
+		});
     </script>
 <style>
 	/* CSS responsive square grid */        
 	.grid-photo {margin:3px -7px;} 
 	.grid-photo:after {content:'';display:block;clear:both;}        
-	.grid-photo .tile {position: relative; display:block; float:left; width: 33.3%; padding-bottom: 10%; height:266px; }
+	.grid-photo .tile {position: relative; display:block; float:left; width: 33.3%; padding-bottom: 10%; height:266px;}
 	.grid-photo .tilebig {position: relative; display:block; float:left; width: 33.3%; padding-bottom: 10%; height:800px; }
-	.grid-photo .grid-photo-box {position: absolute;left: 3px; right: 3px;top: 3px;bottom: 3px;  background-color:#38d8c8;} 
+	.grid-photo .grid-photo-box {position: absolute;left: 3px; right: 3px;top: 3px;bottom: 3px;  background-color:#19BBDC;} 
 	.grid-photo img {position:relative; top:40%; left:25%; width:160px;}
 	.nombretile{color:#FFF;font-size:16px;position:absolute;top:10px;left:20px;text-decoration:none;}
 	@media only screen and (max-width : 1024px) {
@@ -61,7 +70,7 @@
 </head>
 <body> 
 <div id="afui">
-    <div id="content" style="">
+    <div id="content" style="background-color:#CCC;">
     <!--Grid View Page-->
         <div class="panel" title="Title" id="gridview" selected="true">
             <header>
@@ -71,17 +80,17 @@
             <div class="grid-photo">
                 <a href="#item1"><div class='tilebig'><div class="grid-photo-box"><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Punto de Venta</span></div></div>
 				</a>
-				<a href="#item2"><div class='tile'><div class="grid-photo-box"><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Productos</span></div></div>
+				<a href="#item2"><div class='tile'><div class="grid-photo-box" style='background-color:#19BBDC;'><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Productos</span></div></div>
 				</a>
-				<a href="#item3"><div class='tile'><div class="grid-photo-box"><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Clientes</span></div></div>
+				<a href="#item3"><div class='tile'><div class="grid-photo-box" style='background-color:#008FB4;'><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Clientes</span></div></div>
 				</a>
-				<a href="#item4"><div class='tile'><div class="grid-photo-box"><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Configuración</span></div></div>
+				<a href="#item4"><div class='tile'><div class="grid-photo-box" style='background-color:#4D3D98;'><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Configuración</span></div></div>
 				</a>
-				<a href="#item5"><div class='tile'><div class="grid-photo-box"><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Inventario</span></div></div>
+				<a href="#item5"><div class='tile'><div class="grid-photo-box" style='background-color:#008FB4;'><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Inventario</span></div></div>
 				</a>
-				<a href="#item6"><div class='tile'><div class="grid-photo-box"><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Historial Facturación</span></div></div>
+				<a href="#item6"><div class='tile'><div class="grid-photo-box" style='background-color:#008FB4;'><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Historial Facturación</span></div></div>
 				</a>
-				<a href="#item7"><div class='tile'><div class="grid-photo-box"><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Reportes</span></div></div>
+				<a href="#item7"><div class='tile'><div class="grid-photo-box" style='background-color:#008FB4;'><img src="http://www.practisis.net/images/cajeroico.png"/><span class='nombretile'>Reportes</span></div></div>
 				</a>
                 
             </div>
@@ -89,12 +98,13 @@
         </div>
         
     <!--Detail View Pages for each grid items-->
-        <div class="panel" title="Item 1" id="item1">
-            <p>This is detail view for Item 1</p>
+        <div class="panel" title="Facturacion NubePOS" id="item1">
+            <iframe class='miframe' src='https://www.practisis.net/shopNubePOS/index.html' frameborder='0'>
+			</iframe>
         </div>
-        
-        <div class="panel" title="Item 2" id="item2">
-            <p>This is detail view for Item 2</p>
+        <div class="panel" title="Productos" id="item2">
+            <iframe class='miframe' src='https://www.practisis.net/shopNubePOS/index.html' frameborder='0'>
+			</iframe>
         </div>
         
         <div class="panel" title="Item 3" id="item3">
@@ -115,76 +125,7 @@
         
         <div class="panel" title="Item 7" id="item7">
             <p>This is detail view for Item 7</p>
-        </div>
-        
-        <div class="panel" title="Item 8" id="item8">
-            <p>This is detail view for Item 8</p>
-        </div>
-        
-        <div class="panel" title="Item 9" id="item9">
-            <p>This is detail view for Item 9</p>
-        </div>
-        
-        <div class="panel" title="Item 10" id="item10">
-            <p>This is detail view for Item 10</p>
-        </div>
-        
-        <div class="panel" title="Item 11" id="item11">
-            <p>This is detail view for Item 11</p>
-        </div>
-        
-        <div class="panel" title="Item 12" id="item12">
-            <p>This is detail view for Item 12</p>
-        </div>
-        
-        <div class="panel" title="Item 13" id="item13">
-            <p>This is detail view for Item 13</p>
-        </div>
-        
-        <div class="panel" title="Item 14" id="item14">
-            <p>This is detail view for Item 14</p>
-        </div>
-        
-        <div class="panel" title="Item 15" id="item15">
-            <p>This is detail view for Item 15</p>
-        </div>
-        
-        <div class="panel" title="Item 16" id="item16">
-            <p>This is detail view for Item 16</p>
-        </div>
-        
-        <div class="panel" title="Item 17" id="item17">
-            <p>This is detail view for Item 17</p>
-        </div>
-        
-        <div class="panel" title="Item 18" id="item18">
-            <p>This is detail view for Item 18</p>
-        </div>
-        
-        <div class="panel" title="Item 19" id="item19">
-            <p>This is detail view for Item 19</p>
-        </div>
-        
-        <div class="panel" title="Item 20" id="item20">
-            <p>This is detail view for Item 20</p>
-        </div>
-        
-        <div class="panel" title="Item 21" id="item21">
-            <p>This is detail view for Item 11</p>
-        </div>
-        
-        <div class="panel" title="Item 22" id="item22">
-            <p>This is detail view for Item 12</p>
-        </div>
-        
-        <div class="panel" title="Item 23" id="item23">
-            <p>This is detail view for Item 13</p>
-        </div>
-        
-        <div class="panel" title="Item 24" id="item24">
-            <p>This is detail view for Item 14</p>
-        </div>        
-        
+        </div>    
     </div>
 </div>
 </body>
